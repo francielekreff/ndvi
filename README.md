@@ -13,7 +13,7 @@ As imagens foram capturadas com a câmera multiespectral MUX, a qual cobre as qu
 
 A região escolhida para análise deste trabalho está localiza no estado do Amazonas, em uma área que cobre o rio Tefé e sua imagem RGB pode ser visualizada na figura abaixo:  
 
-![Imagem RGB](https://github.com/francielekreff/ndvi/blob/main/imagens/CBERS_4_MUX_20230520_178_104.png)
+<img src="https://github.com/francielekreff/ndvi/blob/main/imagens/CBERS_4_MUX_20230520_178_104.png" width="400">
 
 Ao realizar o download das imagens no catálogo de imagens do INPE/OBT são obtidas quatro imagens, uma de cada faixa do espectro conforme citado anteriormente. As mesmas se encontram disponíveis através deste [link](https://drive.google.com/drive/folders/1nn0_0md1f75e2d5ojl8orLEUb_0FEV9u?usp=sharing). 
 
