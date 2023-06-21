@@ -13,8 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-#Pré-processamento
-
+# Pré-processamento
 # Função de rotação
 def rotation(img):
     
@@ -44,6 +43,14 @@ def crop(img):
     
     return crop_img
 
+# Processamento
+# Função de cálculo do NDVI
+def calcula_ndvi(image_red, image_nir):
+    bottom = (image_nir.astype(float) + image_red.astype(float))
+    bottom[bottom==0] = 0.01
+    ndvi = (image_nir.astype(float) - image_red.astype(float)) / bottom
+    return ndvi
+
 # Carrega a imagem vermelha (RED) - Banda 7
 image_red = cv2.imread('CBERS_4_MUX_20230520_178_104_L4_BAND7.tif', -1)
 
@@ -60,6 +67,13 @@ image_nir = rotation(image_nir)
 image_red = crop(image_red)
 image_nir = crop(image_nir)
 
+# Converte a imagem para um array
+image_red = np.array(image_red, dtype=float)/float(255)
+image_nir = np.array(image_nir, dtype=float)/float(255)
+
+# Calcula NDVI
+image_ndvi = calcula_ndvi(image_red, image_nir)
+
 
 # Plota a imagem rotacionada
-plt.imshow(image_nir, cmap=None)
+plt.imshow(image_ndvi, cmap=None)
