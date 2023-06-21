@@ -11,7 +11,6 @@ Franciele Kreff e Tábata Ariel Pohren
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
 
 # Pré-processamento
 # Função de rotação
@@ -74,6 +73,32 @@ image_nir = np.array(image_nir, dtype=float)/float(255)
 # Calcula NDVI
 image_ndvi = calcula_ndvi(image_red, image_nir)
 
+new_image = np.zeros((image_ndvi.shape[0], image_ndvi.shape[1], 3), dtype=np.uint8)
+
+# Monta mapa de NDVI
+for i in range(len(image_ndvi)):
+    for j in range(len(image_ndvi[0])):
+        
+        # Rios 
+        if image_ndvi[i][j] <= 0.35:
+            new_image[i, j, 2] = 255
+                             
+        # Vegetação
+        elif image_ndvi[i][j] > 0.35 and image_ndvi[i][j] <= 0.40:
+            new_image[i, j, 1] = 150
+        
+        elif image_ndvi[i][j] > 0.40 and image_ndvi[i][j] <= 0.45:
+            new_image[i, j, 1] = 200
+            
+        elif image_ndvi[i][j] > 0.45 and image_ndvi[i][j] <= 0.50:
+            new_image[i, j, 1] = 255
+        
+        # Desmatamento
+        elif image_ndvi[i][j] > 0.50 and image_ndvi[i][j] <= 0.55:
+            new_image[i, j, 0] = 255 
+            
+        elif image_ndvi[i][j] > 0.50:
+            new_image[i, j, 0] = 200 
 
 # Plota a imagem rotacionada
-plt.imshow(image_ndvi, cmap=None)
+plt.imshow(new_image, cmap=None)
