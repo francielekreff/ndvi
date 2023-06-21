@@ -1,5 +1,9 @@
 # Identificação de Áreas de Desmatamento Utilizando NDVI
 
+Um dos primeiros passos a ser realizado no combate ao desmatamento é a criação de metodologias e técnicas que possibilitem monitorar áreas de desmatamento em grandes biomas, como o bioma amazônico, de forma eficiente e com custo razoável.
+
+As imagens de sensoriamento remoto são amplamente utilizadas para fazer esse monitoramento, pois representam uma fonte de dados atualizada sistematicamente e capaz de abranger grandes extensões.
+
 O projeto tem como objetivo desenvolver uma metodologia de processamento de imagem para a identificação de áreas de desmatamento, a partir de imagens de sensoriamento remoto, OpenCV, Python e o Índice de Vegetação de Diferença Normalizada (NDVI).
 
 O projeto foi divido nas estapas de aquisição de images, pré-processamento, processamento por meio de NDVI e desenvolvimento do mapa de NDVI.
