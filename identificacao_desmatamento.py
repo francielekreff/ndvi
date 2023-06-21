@@ -73,6 +73,7 @@ image_nir = np.array(image_nir, dtype=float)/float(255)
 # Calcula NDVI
 image_ndvi = calcula_ndvi(image_red, image_nir)
 
+# Cria nova imagem preta
 new_image = np.zeros((image_ndvi.shape[0], image_ndvi.shape[1], 3), dtype=np.uint8)
 
 # Monta mapa de NDVI
@@ -100,5 +101,5 @@ for i in range(len(image_ndvi)):
         elif image_ndvi[i][j] > 0.50:
             new_image[i, j, 0] = 200 
 
-# Plota a imagem rotacionada
+# Plota a imagem
 plt.imshow(new_image, cmap=None)
