@@ -16,7 +16,6 @@ from matplotlib.patches import Patch
 #Pré-processamento
 
 # Função de rotação
-
 def rotation(img):
     
     rows,cols = img.shape
@@ -32,6 +31,19 @@ def rotation(img):
 
     return  im_dst
 
+# Função de recorte
+def crop(img):
+    
+    # Monta o retangulo para ser o alvo do corte.
+    y=5200
+    x=1500
+    h=175
+    w=185
+
+    crop_img = img[y:y+h, x:x+w]
+    
+    return crop_img
+
 # Carrega a imagem vermelha (RED) - Banda 7
 image_red = cv2.imread('CBERS_4_MUX_20230520_178_104_L4_BAND7.tif', -1)
 
@@ -43,6 +55,11 @@ image_nir = cv2.imread('CBERS_4_MUX_20230520_178_104_L4_BAND8.tif', -1)
 # Rotaciona imagens
 image_red = rotation(image_red)
 image_nir = rotation(image_nir)
+
+# Corta imagens
+image_red = crop(image_red)
+image_nir = crop(image_nir)
+
 
 # Plota a imagem rotacionada
 plt.imshow(image_nir, cmap=None)
